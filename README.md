@@ -13,9 +13,12 @@ DFINITY Internet Computer (ICP)
 ## **1. Executive Summary**
 
 The **ICAIPay x402 Payment Framework** is a **modular, decentralized, and keyless payment protocol** designed for the **Internet Computer (ICP)**.
+
+Built upon the x402 Open Payment Standard, an emerging protocol for decentralized commerce rapidly gaining industry adoption from leaders like Coinbase, ICAIPay extends its foundation with ICP-native innovations.
+
 It unifies **multi-asset management, permit-based authorization, and resource payments** under a single open standard — allowing users and services to perform **trustless, auditable, and cross-chain transactions** without exposing private keys.
 
-Built upon the **x402 Open Payment Standard**, ICAIPay extends it with ICP-native innovations:
+ICAIPay's unique contributions include:
 
 - Integration of **ICRC1/ICRC2** token standards.
 - **ECDSA-based cross-chain settlement** for ckBTC/ckETH.
@@ -165,6 +168,9 @@ Buyer ──► Facilitator ──► Seller
 
 Each facilitator node operates independently and publishes certified metadata to the **Decentralized Facilitator Registry**.
 
+### **6.3 Why the x402 Standard?**
+By adopting the x402 protocol, we move beyond creating a simple, monolithic payment tool. The standard's separation of roles (Buyer, Seller, Facilitator) is designed to foster a **decentralized and competitive marketplace** for payment processing. This prevents vendor lock-in, allows any developer to run a facilitator node, and promotes network resilience and innovation. It provides the ideal foundation for a truly open and composable commerce ecosystem on the Internet Computer.
+
 ---
 
 ## **7. Decentralized Facilitator Registry**
@@ -181,7 +187,7 @@ It enables buyers to discover reliable facilitators, verify metadata, and ensure
 | **Registration** | Facilitators self-register with metadata (public key, endpoint, supported tokens, fee policy). |
 | **Certified Metadata** | Stored using ICP’s certified variables, ensuring tamper-proof validation. |
 | **Discovery API** | Buyers can query facilitators by token, fee rate, uptime, or reputation. |
-| **Reputation Engine** | Auto-updates facilitator scores based on verified transaction outcomes. |
+| **Reputation Engine** | Auto-updates facilitator scores based on verified transaction outcomes. The initial algorithm is a weighted score based on: <ul><li>Transaction Success Rate (60%)</li><li>Uptime & Liveness (20%)</li><li>Transaction Volume & Age (10%)</li><li>Direct User Ratings (10%)</li></ul> |
 | **Governance Layer** | Managed by DAO or multi-sig for approvals, bans, and parameter updates. |
 
 ### **Sample Interface**
@@ -239,7 +245,27 @@ type FacilitatorRecord = record {
 
 ---
 
-## **10. Development Roadmap**
+## **10. Adoption Strategy & Target Use Cases**
+A successful protocol is defined by its adoption. Our go-to-market strategy is focused on providing immediate, tangible value to the ICP developer ecosystem.
+
+### Target Use Cases
+Our initial focus will be on serving three key markets where a decentralized payment layer is a critical missing primitive:
+-- Decentralized Social (DeSo) & Creator Economy: Enabling direct, on-chain tipping, content unlocking, and subscription services without platform fees.
+-- On-Chain Gaming & NFTs: Powering in-game asset purchases, NFT vending machines, and royalty payments in a trustless manner.
+-- AI & DePIN Services: Creating a "pay-as-you-go" marketplace for canisters to programmatically pay other canisters for API calls, compute, or data services.
+
+### Developer Outreach & Tooling
+To make integration seamless, we will deliver a comprehensive Developer Kit, including:
+-- A icaipay-agent NPM package for easy frontend integration.
+-- Rust and Motoko CDK libraries to allow other canisters to easily interact with the ICAIPay protocol.
+-- One-Click-Deploy Scripts and detailed tutorials for our target use cases.
+
+### Early Ecosystem Partnerships
+We are actively identifying launch partners within the ICP ecosystem to serve as early adopters. Collaborating with an established NFT marketplace or DeSo platform will provide invaluable feedback and an immediate showcase of the protocol's capabilities.
+
+---
+
+## **11. Development Roadmap**
 
 | Stage | Duration | Deliverables |
 | --- | --- | --- |
@@ -256,7 +282,7 @@ type FacilitatorRecord = record {
 
 ---
 
-## **11. Future Expansion**
+## **12. Future Expansion**
 
 | Focus Area | Direction |
 | --- | --- |
@@ -264,11 +290,11 @@ type FacilitatorRecord = record {
 | **Reputation Layer** | On-chain scoring and staking-based reputation |
 | **Cross-Chain Adapters** | Integration with Base, Solana, and EVM networks |
 | **Streaming Payments** | Continuous payment support for creators or APIs |
-| **DAO Governance** | On-chain proposal & reward system for facilitators |
+| **DAO Governance** | On-chain proposal & reward system for facilitators. The DAO will be funded by a protocol treasury, which receives a micro-fee (e.g., 0.01%) from every transaction. Facilitators will also be required to stake ICP to register, creating an economic incentive for trustworthy operation and a source of funds for slashing in case of malicious behavior. |
 
 ---
 
-## **12. Expected Impact**
+## **13. Expected Impact**
 
 - Establishes **ICP’s first decentralized payment layer** supporting cross-chain assets.
 - Enables **data, AI, and API marketplaces** to monetize directly on-chain.
@@ -278,7 +304,8 @@ type FacilitatorRecord = record {
 
 ---
 
-## **13. Conclusion**
+
+## **14. Conclusion**
 
 The **ICAIPay x402 Payment Framework** represents a critical leap in decentralized payment infrastructure — merging the **x402 open payment protocol** with **ICP’s canister-native architecture**.
 It delivers a **secure, scalable, and composable framework** for executing payments, managing assets, and verifying transactions across chains — all without intermediaries or private key exposure.
