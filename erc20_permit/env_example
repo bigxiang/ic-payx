@@ -1,3 +1,7 @@
-RPC_URL=
-PRIVATE_KEY_DEPLOYER=
-PRIVATE_KEY_ACCOUNT_2=
+BNB_RPC_URL="https://bsc-dataseed.binance.org"
+BNB_TEST_RPC_URL="https://data-seed-prebsc-1-s1.binance.org:8545"
+SEPOLIA_RPC_URL="https://sepolia.infura.io/v3/"
+PRIVATE_KEY="288d8..."
+PRIVATE_KEY2="c695e8..."
+PRIVATE_KEY3="17f1c1..."
+ETHSCAN_API_KEY="1111...."
