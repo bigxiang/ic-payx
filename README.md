@@ -1,41 +1,37 @@
-# **ICAIPay x402 Payment Framework on Internet Computer**
+# **IC-PayX - an x402 Payment Framework**
 
-### **Project Category:**
+### *EIP-2612 + Multi-Chain Payment + IC-PayX Scan MVP*
 
-Decentralized Multi-Asset Payment Infrastructure
-
-### **Platform:**
-
-DFINITY Internet Computer (ICP)
+**Category:** Decentralized Multi-Asset Payment Infrastructure
+**Platform:** DFINITY Internet Computer (ICP)
 
 ---
 
 ## **1. Executive Summary**
 
-The **ICAIPay x402 Payment Framework** is a **modular, decentralized, and keyless payment protocol** designed for the **Internet Computer (ICP)**.
+The **IC-PayX x402 Payment Framework** is a modular, decentralized, and keyless payment protocol built for the **Internet Computer (ICP)**.
+Based on the **x402 Open Payment Standard**, IC-PayX extends its model with ICP-native capabilities such as **EIP-2612 permits**, **certified data**, and **ECDSA-based cross-chain transactions**.
 
-Built upon the x402 Open Payment Standard, an emerging protocol for decentralized commerce rapidly gaining industry adoption from leaders like Coinbase, ICAIPay extends its foundation with ICP-native innovations.
+IC-PayX introduces a unified standard for **multi-asset payments**, **permit-based authorization**, and **decentralized service discovery**, enabling trustless, auditable, and composable payment flows across ICP and Ethereum ecosystems.
 
-It unifies **multi-asset management, permit-based authorization, and resource payments** under a single open standard — allowing users and services to perform **trustless, auditable, and cross-chain transactions** without exposing private keys.
+### **Key Innovations**
 
-ICAIPay's unique contributions include:
-
-- Integration of **ICRC1/ICRC2** token standards.
-- **ECDSA-based cross-chain settlement** for ckBTC/ckETH.
-- Native **Internet Identity (II)** authorization.
-- A **decentralized Facilitator Registry** enabling discovery and verification of trusted payment nodes.
-
-This creates the foundation for **autonomous, composable, and verifiable payment systems** across decentralized ecosystems.
+- **ICRC-30: EIP-2612 Permit Extension** Propose a new standard for ICP tokens
+- **Multi-Chain Payment Support:** ICP ↔ Ethereum (USDC / ERC20)
+- **Internet Identity Integration:** Keyless user authentication
+- **Facilitator Registry:** Open and verifiable network of payment facilitators
+- **IC-PayX Scan Platform:** Discovery and analytics hub for facilitators and services
+- **ECDSA Cross-Chain Signing:** Enables ICP to execute Ethereum transactions
 
 ---
 
 ## **2. Objectives**
 
-1. Develop a **multi-asset, trustless payment framework** supporting ICRC1/2, and ckETH.
-2. Enable **keyless authorization** through EIP-2612 / ICRC Permit signatures.
-3. Provide **plug-and-play modules** for subscriptions, NFT sales, and API monetization.
-4. Build a **Decentralized Facilitator Registry** for open discovery and trust scoring.
-5. Establish an **ICP-native payment infrastructure** for data, AI, and service commerce.
+1. Develop a **multi-asset, trustless payment framework** supporting ICRC1/2 and ERC20 assets.
+2. Implement **ICRC-30**, an open permit-based authorization standard for ICP tokens.
+3. Deliver **cross-chain payment capability** using ICP ECDSA signatures.
+4. Launch the **IC-PayX Scan Platform** for service discovery, analytics, and registration.
+5. Establish a foundation for **decentralized AI, API, and data commerce** on ICP.
 
 ---
 
@@ -43,42 +39,63 @@ This creates the foundation for **autonomous, composable, and verifiable payment
 
 ### **3.1 Native Decentralization**
 
-- Each payment component runs as an independent **ICP canister** with autonomous logic and state.
-- All interactions occur through **inter-canister calls**, ensuring transparent and auditable flows.
+All payment modules are implemented as **independent ICP canisters**, each maintaining its own autonomous state and verifiable logic.
+This architecture ensures **full transparency**, **auditability**, and **modular composability** across the entire payment network.
 
-### **3.2 Performance and Scalability**
+---
 
-- ICP’s **Threshold Relay + Chain Key cryptography** provides deterministic finality and sub-second confirmation.
-- Ideal for **real-time payments** and **high-frequency trading use cases**.
+### **3.2 Keyless Authorization**
 
-### **3.3 Multi-Asset and Cross-Chain Support**
+Through the **ICRC-30: EIP-2612 Permit Extension** proposal, IC-PayX enables **off-chain signature-based approvals**.
+Users authorize payments without ever exposing private keys or maintaining traditional wallets, resulting in **secure, seamless, and frictionless authorization** across dApps and services.
 
-- Built-in support for **ICRC1/ICRC2** tokens.
-- Cross-chain execution via **ICP ECDSA** signatures for ckBTC, ckETH, and external EVM assets.
+---
 
-### **3.4 Identity and Authorization**
+### **3.3 Multi-Asset & Cross-Chain Support**
 
-- Users authenticate through **Internet Identity (II)** and Principal-based accounts.
-- Payments authorized via **permit signatures** — with time, value, or scope constraints.
+IC-PayX natively supports both **ICRC1/2 (ICP-native tokens)** and **EVM ERC20 assets**, enabling payments across ecosystems.
+Using ICP’s built-in **ECDSA signature service**, the framework can **securely sign and broadcast Ethereum transactions**, bridging ICP with the wider Web3 financial landscape.
 
-### **3.5 Certified Trust Layer**
+---
 
-- All payment data can be **certified via Merkle proofs**, allowing frontend or third-party trustless verification.
+### **3.4 Certified Trust Layer**
 
-### **3.6 Automated Execution**
+Every payment log, facilitator record, and authorization event is stored using **ICP Certified Variables**.
+This provides **Merkle-proof verifiability** for frontends and third-party indexers — ensuring that all user-facing data can be validated **without trusting any centralized server**.
 
-- Canisters use **heartbeat cycles** to manage periodic settlements, refunds, or ledger synchronization.
+---
 
-### **3.7 Unified Technology Stack**
+### **3.5 High Performance**
+
+The Internet Computer’s **Threshold Relay + Chain Key** cryptography achieves **deterministic finality** and **sub-second execution**, making IC-PayX suitable for **real-time microtransactions**, **high-frequency trading**, and **automated service payments**.
+
+---
+
+### **3.6 Zero-Fee User Experience**
+
+Unlike traditional blockchains, the **Internet Computer imposes no gas fees on end users**.
+All computation and storage costs are handled by canisters through **cycle-based economics**, meaning:
+
+- End users experience **instant, gasless transactions**, ideal for Web2-like onboarding.
+- Developers can design **subscription-based or sponsored-fee models** without compromising decentralization.
+- Facilitators and dApps can **abstract transaction costs** entirely, creating a **smooth, scalable payment UX** that’s impossible on gas-metered chains.
+
+This zero-fee model transforms IC-PayX into a **truly frictionless payment network**, accessible to both crypto-native users and mainstream audiences.
+
+---
+
+### 3.6 Unified Technology Stack
 
 | Layer | Technology | Description |
 | --- | --- | --- |
-| Smart Contracts | Rust | Core payment logic |
-| Identity | Internet Identity | Principal authentication |
-| Tokens | ICRC1 / ICRC2 / USDC(ETH) | Multi-chain asset support |
-| Frontend | React + agent-js | dApp interfaces |
-| APIs | GraphQL / REST (optional) | Discovery and logging |
-| Certification | ICP Certified Variables | Trustless data verification |
+| Smart Contracts | Rust (ic-cdk) | Core logic & canister orchestration |
+| Identity | Internet Identity | Principal-based authentication |
+| Tokens | ICRC1 / ICRC2 / ERC20 (EIP-2612) | Multi-chain assets |
+| Authorization | ICRC-30 | Universal permit-based authorization |
+| Cross-Chain | ICP ECDSA Service | Ethereum transaction signing |
+| Frontend | Next.js / React + agent-js | dApp and Scan UI |
+| APIs | GraphQL / REST | Indexer and analytics access |
+| Certification | ic-certified-map | Verifiable state proofs |
 
 ---
 
@@ -87,45 +104,56 @@ This creates the foundation for **autonomous, composable, and verifiable payment
 ```
 +-------------------------------------------------------------+
 |                        Frontend (dApp)                      |
-|  - Payment UI & status display                              |
-|  - Internet Identity permit signing                         |
+|  - Payment UI & transaction status                          |
+|  - Internet Identity + ICRC-30 permit signing               |
+|  - Service registration via IC-PayX Scan                   |
 +-------------------------------------------------------------+
                   |
                   v
 +-------------------------------------------------------------+
-|                   Optional API / Gateway Layer              |
-|  - Token metadata, price feed, risk validation              |
-|  - REST/GraphQL for indexers or analytics                   |
+|                IIC-PayXScan / API Gateway Layer             |
+|  - Facilitator & Service metadata APIs                       |
+|  - Token metadata, price feeds, and reputation data          |
+|  - GraphQL / REST endpoints for explorers and analytics      |
 +-------------------------------------------------------------+
                   |
                   v
 +-------------------------------------------------------------------------+
-|                     ICP Smart Contract Layer                            |
+|                        ICP Smart Contract Layer                         |
 |                                                                         |
 |  +------------------+   +------------------+   +----------------------+ |
 |  | Payment Manager  |   | Authorization    |   | Facilitator Registry | |
-|  | - Orders, exec.  |   | - Permit Tokens  |   | - Registration & DAO | |
+|  | - Orders & exec. |   | - ICRC-30 permits|   | - Registration & DAO | |
 |  +------------------+   +------------------+   +----------------------+ |
 |                                                                         |
 |  +------------------+   +-------------------+                           |
 |  | Asset Manager    |   | Transaction Logger|                           |
-|  | - Multi-Asset    |   | - Certified Logs  |                           |
+|  | - Multi-asset    |   | - Certified logs  |                           |
 |  +------------------+   +-------------------+                           |
 |                                                                         |
 |  +------------------------------------------+                           |
-|  | Permit Transfer                          |                           |
-|  | - EIP-2612/ICRC Permit verification      |                           |
-|  | - Execute & fallback approval            |                           |
+|  | ICRC-30 Permit Transfer                  |                           |
+|  | - Permit verification & cross-token exec |                           |
+|  | - Fallback approval flow                 |                           |
 |  +------------------------------------------+                           |
 +-------------------------------------------------------------------------+
                   |
                   v
 +-------------------------------------------------------------+
-|                 External Asset Interfaces                   |
-|  - ICRC Tokens, ckBTC/ckETH via ECDSA                       |
+|                External Asset Interfaces                    |
+|  - ICRC Tokens(ICRC-30)                                     |
+|  - ERC20 (EIP-2612) via Ethereum Gateway                    |
 |  - Third-party payment bridges                              |
 +-------------------------------------------------------------+
 ```
+
+### Architectural Principles
+
+- **Composable:** Each module is an autonomous canister.
+- **Auditable:** Certified Merkle-proof verification.
+- **Keyless:** ICRC-30 replaces manual approvals.
+- **Cross-Chain:** ECDSA signing supports external networks.
+- **Discoverable:** IC-PayX Scan provides registry & analytics.
 
 ---
 
@@ -133,181 +161,419 @@ This creates the foundation for **autonomous, composable, and verifiable payment
 
 | Module | Function | Highlights |
 | --- | --- | --- |
-| **Payment Manager** | Creates and executes payment orders | Permit & fallback transfers |
-| **Authorization** | Manages permits and time-limited approvals | EIP-2612 / ICRC Permit compatible |
-| **Permit Transfer** | Verifies signatures & transfers | Cross-token support |
-| **Asset Manager** | Handles multi-asset custody | Includes freeze/unfreeze logic |
-| **Transaction Logger** | Certified record of all transactions | Supports verifiable audits |
-| **Risk & Security** | Protects against replay, fraud | Multi-sig, ACL, and rate limits |
-| **Facilitator Registry** | Decentralized registry for x402 facilitators | Discovery, scoring, and certification |
+| **Payment Manager** | Executes payment orders | ICRC-30 permits, fallback transfers, order batching |
+| **Authorization (ICRC-30)** | Manages scope-based approvals | Compatible with EIP-2612, supports expiry and replay protection |
+| **ICRC-30 Permit Transfer** | Cross-token verification | Unified flow for ICP + ETH assets |
+| **Asset Manager** | Multi-asset custody | ICRC, ERC20, pay & transfer support |
+| **Transaction Logger** | Certified record-keeping | Tamper-proof via certified variables |
+| **Facilitator Registry** | Decentralized node registry | Metadata, discovery APIs, scoring engine |
+| **Risk & Security** | Fraud & abuse protection | Rate limits, ACLs, optional multi-sig |
+| **IC-PayX Scan Layer** | Service discovery portal | Frontend for registration and analytics |
 
 ---
 
 ## **6. X402 Protocol Integration**
 
-The **x402 standard** defines secure, open interactions among **Buyers**, **Facilitators**, **Sellers**, and the **Discovery network**.
-It provides the foundation for **decentralized payment routing and resource delivery**.
+The **x402 protocol** defines open, secure interactions among **Buyers**, **Facilitators**, **Sellers**, and the **Discovery Network**.
+IC-PayX adopts and extends this standard for ICP, ensuring transparent, decentralized payment routing.
 
-### **6.1 Core Roles**
+### 6.1 Core Roles
 
 | Actor | Role | Description |
 | --- | --- | --- |
-| **Buyer** | Purchaser | Initiates payment with signed intent |
-| **Facilitator** | Mediator | Verifies, executes, issues receipts |
-| **Seller** | Provider | Registers resource and verifies receipts |
-| **Discovery** | Index | Lists and validates available sellers |
+| **Buyer** | Purchaser | Initiates payment via signed ICRC-30 intent |
+| **Facilitator** | Mediator | Executes payments, issues certified receipts |
+| **Seller** | Provider | Registers services, validates receipts |
+| **Discovery** | Index | Lists and verifies registered facilitators/services |
 
-### **6.2 Transaction Flow**
+### 6.2 Transaction Flow
 
 ```
-Buyer ──► Facilitator ──► Seller
-   ▲           │              │
-   │           ▼              │
-   └──── Discovery ◄──────────┘
+Buyer ──► Facilitator ──► Seller-------
+   ▲           │                       │
+   │           ▼                       │
+   └──── Discovery (IC-PayX Scan) ◄───┘
 ```
 
-Each facilitator node operates independently and publishes certified metadata to the **Decentralized Facilitator Registry**.
+1. Buyer authenticates via **Internet Identity**, generates **ICRC-30 permit**.
+2. Facilitator validates permit, executes payment via **Payment Manager**.
+3. Seller confirms via **certified transaction logs**.
+4. Discovery (IC-PayX Scan) maintains certified metadata and analytics.
 
-### **6.3 Why the x402 Standard?**
-By adopting the x402 protocol, we move beyond creating a simple, monolithic payment tool. The standard's separation of roles (Buyer, Seller, Facilitator) is designed to foster a **decentralized and competitive marketplace** for payment processing. This prevents vendor lock-in, allows any developer to run a facilitator node, and promotes network resilience and innovation. It provides the ideal foundation for a truly open and composable commerce ecosystem on the Internet Computer.
+### 6.3 Why X402?
 
----
+- **Open Participation:** Any developer can run a Facilitator node.
+- **No Vendor Lock-in:** Market-driven facilitator competition.
+- **Composability:** Buyers, Sellers, and Facilitators interoperate via open APIs.
+- **Verifiability:** Every payment path is cryptographically auditable.
 
-## **7. Decentralized Facilitator Registry**
+### 6.4 IC-PayX Enhancements
 
-### **Purpose**
-
-The **Facilitator Registry** is the backbone of x402 network trust.
-It enables buyers to discover reliable facilitators, verify metadata, and ensure that payments are routed through transparent, auditable nodes.
-
-### **Functions**
-
-| Function | Description |
+| Feature | Description |
 | --- | --- |
-| **Registration** | Facilitators self-register with metadata (public key, endpoint, supported tokens, fee policy). |
-| **Certified Metadata** | Stored using ICP’s certified variables, ensuring tamper-proof validation. |
-| **Discovery API** | Buyers can query facilitators by token, fee rate, uptime, or reputation. |
-| **Reputation Engine** | Auto-updates facilitator scores based on verified transaction outcomes. The initial algorithm is a weighted score based on: <ul><li>Transaction Success Rate (60%)</li><li>Uptime & Liveness (20%)</li><li>Transaction Volume & Age (10%)</li><li>Direct User Ratings (10%)</li></ul> |
-| **Governance Layer** | Managed by DAO or multi-sig for approvals, bans, and parameter updates. |
-
-### **Sample Interface**
-
-```rust
-service : {
-    register_facilitator : (FacilitatorInfo) -> (Result<(), Text>);
-    query_facilitators : (QueryFilter) -> (vec FacilitatorRecord);
-    rate_facilitator : (Principal, u8) -> (Result<(), Text>);
-    certified_snapshot : () -> (CertifiedFacilitatorSnapshot);
-}
-```
-
-### **Data Structures**
-
-```rust
-type FacilitatorInfo = record {
-    name : text;
-    endpoint : text;
-    supported_tokens : vec text;
-    fee_model : text;  // fixed, percent, tiered
-    owner : principal;
-    public_key : blob;
-};
-
-type FacilitatorRecord = record {
-    info : FacilitatorInfo;
-    reputation : float;
-    status : text;  // active / paused / banned
-    registered_at : nat64;
-};
-```
+| **ICRC-30 Authorization Layer** | Unifies ICP and EVM permit standards |
+| **Certified Receipts** | Verifiable Merkle-based payment proofs |
+| **IC-PayX Scan API** | Search by token, fee, uptime, or region |
+| **Cross-Chain Settlement** | ICP executes ETH transactions via ECDSA |
+| **Trust Scoring Model** | Facilitator ratings based on performance metrics |
 
 ---
 
-## **8. Transaction Lifecycle**
+## **7. IC-PayX Scan Platform**
 
-| Phase | Description |
+**IC-PayX Scan** is the discovery, analytics, and registration gateway of the IC-PayX network.
+
+### Core Capabilities
+
+| Feature | Description |
 | --- | --- |
-| **Registration** | Seller registers resource metadata to Facilitator & Discovery. |
-| **Discovery** | Buyer queries Discovery or Registry for facilitators & resources. |
-| **Payment** | Buyer sends signed permit to Facilitator; payment is executed. |
-| **Delivery** | Seller verifies receipt & delivers digital asset/service. |
-| **Audit** | Certified logs allow anyone to verify completion and settlement. |
+| **Facilitator Explorer** | Browse registered facilitators and reputation scores |
+| **Service Registry** | On-chain registration for dApps, APIs, and services |
+| **Certified Metadata** | ICP-verified facilitator and service info |
+| **Analytics Dashboard** | Volume, uptime, and performance insights |
+| **Discovery API** | Query by token, fee model, or category |
+| **Registration Portal** | Internet Identity-based onboarding for new participants |
 
 ---
 
-## **9. Security & Verification**
+## **8. 4-Month Development Plan**
 
-- **Certified Receipts:** Facilitators sign and timestamp all payment proofs.
-- **Replay Prevention:** Nonce-based validation ensures one-time use of permits.
-- **ACL & Multi-Sig:** Configurable access layers for institutional or DAO payments.
-- **Merkle Certification:** Enables lightweight verification on the frontend.
-- **Traceability:** Every payment can be cryptographically audited.
-
----
-
-## **10. Adoption Strategy & Target Use Cases**
-A successful protocol is defined by its adoption. Our go-to-market strategy is focused on providing immediate, tangible value to the ICP developer ecosystem.
-
-### Target Use Cases
-Our initial focus will be on serving three key markets where a decentralized payment layer is a critical missing primitive:
--- Decentralized Social (DeSo) & Creator Economy: Enabling direct, on-chain tipping, content unlocking, and subscription services without platform fees.
--- On-Chain Gaming & NFTs: Powering in-game asset purchases, NFT vending machines, and royalty payments in a trustless manner.
--- AI & DePIN Services: Creating a "pay-as-you-go" marketplace for canisters to programmatically pay other canisters for API calls, compute, or data services.
-
-### Developer Outreach & Tooling
-To make integration seamless, we will deliver a comprehensive Developer Kit, including:
--- A icaipay-agent NPM package for easy frontend integration.
--- Rust and Motoko CDK libraries to allow other canisters to easily interact with the ICAIPay protocol.
--- One-Click-Deploy Scripts and detailed tutorials for our target use cases.
-
-### Early Ecosystem Partnerships
-We are actively identifying launch partners within the ICP ecosystem to serve as early adopters. Collaborating with an established NFT marketplace or DeSo platform will provide invaluable feedback and an immediate showcase of the protocol's capabilities.
+| Phase | Duration | Focus | Deliverables |
+| --- | --- | --- | --- |
+| **M1 — Architecture & Design** | Weeks 1–2 | Define ICRC-30, system schema | ICRC-30 spec, Candid types, Scan API schema |
+| **M2 — Core Implementation** | Weeks 3–6 | Build ICP canisters | PaymentManager, Authorization, Logger |
+| **M3 — ETH Integration & Scan** | Weeks 7–9 | Enable cross-chain & deploy Scan base | EIP-2612 validation, ECDSA signing, Registry canister |
+| **M4 — Frontend & UX** | Weeks 10–12 | Integrate UI & discovery | Internet Identity + ICRC-30 flow, Scan portal |
+| **M5 — Test & Launch** | Weeks 13–16 | Test & release | Cross-chain tests, registry flow, documentation |
 
 ---
 
-## **11. Development Roadmap**
+## **9. Expected Deliverables**
 
-| Stage | Duration | Deliverables |
+- Full implementation of **ICRC-30: EIP-2612 Permit Extension**
+- Operational **multi-chain payment MVP** on ICP
+- **IC-PayX Scan Platform** (Facilitator & Service discovery)
+- Cross-chain signing between ICP and Ethereum
+- Certified logging and verifiable payment proofs
+- Open-source SDK & documentation
+
+---
+
+## **10. Future Expansion**
+
+| Area | Focus |
+| --- | --- |
+| **ICRC-30 Standardization** | Submit as open standard to DFINITY Forum |
+| **Reputation Engine v2** | Dynamic facilitator scoring |
+| **Streaming Payments** | Continuous and subscription settlement |
+| **DAO Governance** | Facilitator staking and treasury rewards |
+| **Multi-Chain Expansion** | Support for Base, Solana, and L2 networks |
+
+---
+
+## **11. Impact**
+
+- Establishes **ICP’s first cross-chain, keyless payment framework**
+- Enables **AI, API, and DePIN** services to monetize directly on-chain
+- Bridges ICP and EVM ecosystems through unified authorization
+- Sets a new **open standard (ICRC-30)** for secure, verifiable payments
+
+---
+
+## **12. Conclusion**
+
+The **IC-PayX x402 Payment Framework** represents a transformative step in Web3 financial infrastructure.
+By merging **x402’s decentralized role model** with **ICRC-30 authorization** and the **IC-PayX Scan Platform**, it enables a truly **open, auditable, and composable** payment ecosystem — where services, facilitators, and users interact without intermediaries or private key exposure.
+
+IC-PayX positions the **Internet Computer** as a central hub for **next-generation cross-chain payment automation** and decentralized commerce.
+
+---# **IC-PayX - an x402 Payment Framework**
+
+### *EIP-2612 + Multi-Chain Payment + IC-PayX Scan MVP*
+
+**Category:** Decentralized Multi-Asset Payment Infrastructure
+**Platform:** DFINITY Internet Computer (ICP)
+
+---
+
+## **1. Executive Summary**
+
+The **IC-PayX x402 Payment Framework** is a modular, decentralized, and keyless payment protocol built for the **Internet Computer (ICP)**.
+Based on the **x402 Open Payment Standard**, IC-PayX extends its model with ICP-native capabilities such as **EIP-2612 permits**, **certified data**, and **ECDSA-based cross-chain transactions**.
+
+IC-PayX introduces a unified standard for **multi-asset payments**, **permit-based authorization**, and **decentralized service discovery**, enabling trustless, auditable, and composable payment flows across ICP and Ethereum ecosystems.
+
+### **Key Innovations**
+
+- **ICRC-30: EIP-2612 Permit Extension** Propose a new standard for ICP tokens
+- **Multi-Chain Payment Support:** ICP ↔ Ethereum (USDC / ERC20)
+- **Internet Identity Integration:** Keyless user authentication
+- **Facilitator Registry:** Open and verifiable network of payment facilitators
+- **IC-PayX Scan Platform:** Discovery and analytics hub for facilitators and services
+- **ECDSA Cross-Chain Signing:** Enables ICP to execute Ethereum transactions
+
+---
+
+## **2. Objectives**
+
+1. Develop a **multi-asset, trustless payment framework** supporting ICRC1/2 and ERC20 assets.
+2. Implement **ICRC-30**, an open permit-based authorization standard for ICP tokens.
+3. Deliver **cross-chain payment capability** using ICP ECDSA signatures.
+4. Launch the **IC-PayX Scan Platform** for service discovery, analytics, and registration.
+5. Establish a foundation for **decentralized AI, API, and data commerce** on ICP.
+
+---
+
+## **3. Core Technical Advantages**
+
+### **3.1 Native Decentralization**
+
+All payment modules are implemented as **independent ICP canisters**, each maintaining its own autonomous state and verifiable logic.
+This architecture ensures **full transparency**, **auditability**, and **modular composability** across the entire payment network.
+
+---
+
+### **3.2 Keyless Authorization**
+
+Through the **ICRC-30: EIP-2612 Permit Extension** proposal, IC-PayX enables **off-chain signature-based approvals**.
+Users authorize payments without ever exposing private keys or maintaining traditional wallets, resulting in **secure, seamless, and frictionless authorization** across dApps and services.
+
+---
+
+### **3.3 Multi-Asset & Cross-Chain Support**
+
+IC-PayX natively supports both **ICRC1/2 (ICP-native tokens)** and **EVM ERC20 assets**, enabling payments across ecosystems.
+Using ICP’s built-in **ECDSA signature service**, the framework can **securely sign and broadcast Ethereum transactions**, bridging ICP with the wider Web3 financial landscape.
+
+---
+
+### **3.4 Certified Trust Layer**
+
+Every payment log, facilitator record, and authorization event is stored using **ICP Certified Variables**.
+This provides **Merkle-proof verifiability** for frontends and third-party indexers — ensuring that all user-facing data can be validated **without trusting any centralized server**.
+
+---
+
+### **3.5 High Performance**
+
+The Internet Computer’s **Threshold Relay + Chain Key** cryptography achieves **deterministic finality** and **sub-second execution**, making IC-PayX suitable for **real-time microtransactions**, **high-frequency trading**, and **automated service payments**.
+
+---
+
+### **3.6 Zero-Fee User Experience**
+
+Unlike traditional blockchains, the **Internet Computer imposes no gas fees on end users**.
+All computation and storage costs are handled by canisters through **cycle-based economics**, meaning:
+
+- End users experience **instant, gasless transactions**, ideal for Web2-like onboarding.
+- Developers can design **subscription-based or sponsored-fee models** without compromising decentralization.
+- Facilitators and dApps can **abstract transaction costs** entirely, creating a **smooth, scalable payment UX** that’s impossible on gas-metered chains.
+
+This zero-fee model transforms IC-PayX into a **truly frictionless payment network**, accessible to both crypto-native users and mainstream audiences.
+
+---
+
+### 3.6 Unified Technology Stack
+
+| Layer | Technology | Description |
 | --- | --- | --- |
-| M1  | 2 weeks | Architecture, token mapping, workflow design |
-| M2  | 4 weeks | Core Canisters: Payment, Authorization, Logger |
-| M3  | 3 weeks | Permit Transfer module |
-| M4  | 2 weeks | Frontend & Internet Identity integration |
-| M5  | 4 weeks | Cross-chain USDC(EIP-2612)/ETH support |
-| M6  | 2 weeks | Security & multi-sig hardening |
-| M7  | 3 weeks | **Facilitator Registry deployment** |
-| M8  | 2 weeks | Testing & optimization |
-| M9  | 1 week | Documentation & release |
-| Continuous | —   | NFT/subscription extensions, SDK tools |
+| Smart Contracts | Rust (ic-cdk) | Core logic & canister orchestration |
+| Identity | Internet Identity | Principal-based authentication |
+| Tokens | ICRC1 / ICRC2 / ERC20 (EIP-2612) | Multi-chain assets |
+| Authorization | ICRC-30 | Universal permit-based authorization |
+| Cross-Chain | ICP ECDSA Service | Ethereum transaction signing |
+| Frontend | Next.js / React + agent-js | dApp and Scan UI |
+| APIs | GraphQL / REST | Indexer and analytics access |
+| Certification | ic-certified-map | Verifiable state proofs |
 
 ---
 
-## **12. Future Expansion**
+## **4. System Architecture**
 
-| Focus Area | Direction |
+```
++-------------------------------------------------------------+
+|                        Frontend (dApp)                      |
+|  - Payment UI & transaction status                          |
+|  - Internet Identity + ICRC-30 permit signing               |
+|  - Service registration via IC-PayX Scan                   |
++-------------------------------------------------------------+
+                  |
+                  v
++-------------------------------------------------------------+
+|                IIC-PayXScan / API Gateway Layer             |
+|  - Facilitator & Service metadata APIs                       |
+|  - Token metadata, price feeds, and reputation data          |
+|  - GraphQL / REST endpoints for explorers and analytics      |
++-------------------------------------------------------------+
+                  |
+                  v
++-------------------------------------------------------------------------+
+|                        ICP Smart Contract Layer                         |
+|                                                                         |
+|  +------------------+   +------------------+   +----------------------+ |
+|  | Payment Manager  |   | Authorization    |   | Facilitator Registry | |
+|  | - Orders & exec. |   | - ICRC-30 permits|   | - Registration & DAO | |
+|  +------------------+   +------------------+   +----------------------+ |
+|                                                                         |
+|  +------------------+   +-------------------+                           |
+|  | Asset Manager    |   | Transaction Logger|                           |
+|  | - Multi-asset    |   | - Certified logs  |                           |
+|  +------------------+   +-------------------+                           |
+|                                                                         |
+|  +------------------------------------------+                           |
+|  | ICRC-30 Permit Transfer                  |                           |
+|  | - Permit verification & cross-token exec |                           |
+|  | - Fallback approval flow                 |                           |
+|  +------------------------------------------+                           |
++-------------------------------------------------------------------------+
+                  |
+                  v
++-------------------------------------------------------------+
+|                External Asset Interfaces                    |
+|  - ICRC Tokens(ICRC-30)                                     |
+|  - ERC20 (EIP-2612) via Ethereum Gateway                    |
+|  - Third-party payment bridges                              |
++-------------------------------------------------------------+
+```
+
+### Architectural Principles
+
+- **Composable:** Each module is an autonomous canister.
+- **Auditable:** Certified Merkle-proof verification.
+- **Keyless:** ICRC-30 replaces manual approvals.
+- **Cross-Chain:** ECDSA signing supports external networks.
+- **Discoverable:** IC-PayX Scan provides registry & analytics.
+
+---
+
+## **5. Core Modules**
+
+| Module | Function | Highlights |
+| --- | --- | --- |
+| **Payment Manager** | Executes payment orders | ICRC-30 permits, fallback transfers, order batching |
+| **Authorization (ICRC-30)** | Manages scope-based approvals | Compatible with EIP-2612, supports expiry and replay protection |
+| **ICRC-30 Permit Transfer** | Cross-token verification | Unified flow for ICP + ETH assets |
+| **Asset Manager** | Multi-asset custody | ICRC, ERC20, pay & transfer support |
+| **Transaction Logger** | Certified record-keeping | Tamper-proof via certified variables |
+| **Facilitator Registry** | Decentralized node registry | Metadata, discovery APIs, scoring engine |
+| **Risk & Security** | Fraud & abuse protection | Rate limits, ACLs, optional multi-sig |
+| **IC-PayX Scan Layer** | Service discovery portal | Frontend for registration and analytics |
+
+---
+
+## **6. X402 Protocol Integration**
+
+The **x402 protocol** defines open, secure interactions among **Buyers**, **Facilitators**, **Sellers**, and the **Discovery Network**.
+IC-PayX adopts and extends this standard for ICP, ensuring transparent, decentralized payment routing.
+
+### 6.1 Core Roles
+
+| Actor | Role | Description |
+| --- | --- | --- |
+| **Buyer** | Purchaser | Initiates payment via signed ICRC-30 intent |
+| **Facilitator** | Mediator | Executes payments, issues certified receipts |
+| **Seller** | Provider | Registers services, validates receipts |
+| **Discovery** | Index | Lists and verifies registered facilitators/services |
+
+### 6.2 Transaction Flow
+
+```
+Buyer ──► Facilitator ──► Seller-------
+   ▲           │                       │
+   │           ▼                       │
+   └──── Discovery (IC-PayX Scan) ◄───┘
+```
+
+1. Buyer authenticates via **Internet Identity**, generates **ICRC-30 permit**.
+2. Facilitator validates permit, executes payment via **Payment Manager**.
+3. Seller confirms via **certified transaction logs**.
+4. Discovery (IC-PayX Scan) maintains certified metadata and analytics.
+
+### 6.3 Why X402?
+
+- **Open Participation:** Any developer can run a Facilitator node.
+- **No Vendor Lock-in:** Market-driven facilitator competition.
+- **Composability:** Buyers, Sellers, and Facilitators interoperate via open APIs.
+- **Verifiability:** Every payment path is cryptographically auditable.
+
+### 6.4 IC-PayX Enhancements
+
+| Feature | Description |
 | --- | --- |
-| **Autonomous Facilitators** | Self-operating, AI-driven payment executors |
-| **Reputation Layer** | On-chain scoring and staking-based reputation |
-| **Cross-Chain Adapters** | Integration with Base, Solana, and EVM networks |
-| **Streaming Payments** | Continuous payment support for creators or APIs |
-| **DAO Governance** | On-chain proposal & reward system for facilitators. The DAO will be funded by a protocol treasury, which receives a micro-fee (e.g., 0.01%) from every transaction. Facilitators will also be required to stake ICP to register, creating an economic incentive for trustworthy operation and a source of funds for slashing in case of malicious behavior. |
+| **ICRC-30 Authorization Layer** | Unifies ICP and EVM permit standards |
+| **Certified Receipts** | Verifiable Merkle-based payment proofs |
+| **IC-PayX Scan API** | Search by token, fee, uptime, or region |
+| **Cross-Chain Settlement** | ICP executes ETH transactions via ECDSA |
+| **Trust Scoring Model** | Facilitator ratings based on performance metrics |
 
 ---
 
-## **13. Expected Impact**
+## **7. IC-PayX Scan Platform**
 
-- Establishes **ICP’s first decentralized payment layer** supporting cross-chain assets.
-- Enables **data, AI, and API marketplaces** to monetize directly on-chain.
-- Fosters **trustless commerce ecosystems** without centralized processors.
-- Bridges **ICP and Ethereum ecosystems** through ECDSA interoperability.
-- Provides a **reference architecture** for future Web3 financial systems.
+**IC-PayX Scan** is the discovery, analytics, and registration gateway of the IC-PayX network.
+
+### Core Capabilities
+
+| Feature | Description |
+| --- | --- |
+| **Facilitator Explorer** | Browse registered facilitators and reputation scores |
+| **Service Registry** | On-chain registration for dApps, APIs, and services |
+| **Certified Metadata** | ICP-verified facilitator and service info |
+| **Analytics Dashboard** | Volume, uptime, and performance insights |
+| **Discovery API** | Query by token, fee model, or category |
+| **Registration Portal** | Internet Identity-based onboarding for new participants |
 
 ---
 
+## **8. 4-Month Development Plan**
 
-## **14. Conclusion**
+| Phase | Duration | Focus | Deliverables |
+| --- | --- | --- | --- |
+| **M1 — Architecture & Design** | Weeks 1–2 | Define ICRC-30, system schema | ICRC-30 spec, Candid types, Scan API schema |
+| **M2 — Core Implementation** | Weeks 3–6 | Build ICP canisters | PaymentManager, Authorization, Logger |
+| **M3 — ETH Integration & Scan** | Weeks 7–9 | Enable cross-chain & deploy Scan base | EIP-2612 validation, ECDSA signing, Registry canister |
+| **M4 — Frontend & UX** | Weeks 10–12 | Integrate UI & discovery | Internet Identity + ICRC-30 flow, Scan portal |
+| **M5 — Test & Launch** | Weeks 13–16 | Test & release | Cross-chain tests, registry flow, documentation |
 
-The **ICAIPay x402 Payment Framework** represents a critical leap in decentralized payment infrastructure — merging the **x402 open payment protocol** with **ICP’s canister-native architecture**.
-It delivers a **secure, scalable, and composable framework** for executing payments, managing assets, and verifying transactions across chains — all without intermediaries or private key exposure.
+---
 
-With its **Facilitator Registry**, **permit-based authorization**, and **multi-asset architecture**, ICAIPay positions ICP as a **core hub for next-generation Web3 payment automation**.
+## **9. Expected Deliverables**
+
+- Full implementation of **ICRC-30: EIP-2612 Permit Extension**
+- Operational **multi-chain payment MVP** on ICP
+- **IC-PayX Scan Platform** (Facilitator & Service discovery)
+- Cross-chain signing between ICP and Ethereum
+- Certified logging and verifiable payment proofs
+- Open-source SDK & documentation
+
+---
+
+## **10. Future Expansion**
+
+| Area | Focus |
+| --- | --- |
+| **ICRC-30 Standardization** | Submit as open standard to DFINITY Forum |
+| **Reputation Engine v2** | Dynamic facilitator scoring |
+| **Streaming Payments** | Continuous and subscription settlement |
+| **DAO Governance** | Facilitator staking and treasury rewards |
+| **Multi-Chain Expansion** | Support for Base, Solana, and L2 networks |
+
+---
+
+## **11. Impact**
+
+- Establishes **ICP’s first cross-chain, keyless payment framework**
+- Enables **AI, API, and DePIN** services to monetize directly on-chain
+- Bridges ICP and EVM ecosystems through unified authorization
+- Sets a new **open standard (ICRC-30)** for secure, verifiable payments
+
+---
+
+## **12. Conclusion**
+
+The **IC-PayX x402 Payment Framework** represents a transformative step in Web3 financial infrastructure.
+By merging **x402’s decentralized role model** with **ICRC-30 authorization** and the **IC-PayX Scan Platform**, it enables a truly **open, auditable, and composable** payment ecosystem — where services, facilitators, and users interact without intermediaries or private key exposure.
+
+IC-PayX positions the **Internet Computer** as a central hub for **next-generation cross-chain payment automation** and decentralized commerce.
+
+---
