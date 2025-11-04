@@ -287,6 +287,4 @@ By merging **x402’s decentralized role model** with **ICRC-30 authorization** 
 
 IC-PayX positions the **Internet Computer** as a central hub for **next-generation cross-chain payment automation** and decentralized commerce.
 
-IC-PayX positions the **Internet Computer** as a central hub for **next-generation cross-chain payment automation** and decentralized commerce.
-
 ---
