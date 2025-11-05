@@ -237,14 +237,12 @@ Buyer ──► Facilitator ──► Seller-------
 ---
 
 ## **8. 4-Month Development Plan**
+| Stage   | Name                              | Main Deliverables                              | Duration  | 
+| ------- | --------------------------------- | ---------------------------------------------- | --------- | 
+| **M1**  | ICRC-30 Core & Payment Prototype  | Implement ICRC-30 standard and first keyless payment prototype | Weeks 1–5 | 
+| **M2**  | Multi-chain Support & Facilitator Registry | Implement EIP-2612 + ECDSA cross-chain payments and coordinator registry | Weeks 6–12 | 
+| **M3**  | IC-PayX Scan Platform & SDK      | Service discovery platform, logging system, SDK, and governance module | Weeks 13–16 | 
 
-| Phase | Duration | Focus | Deliverables |
-| --- | --- | --- | --- |
-| **M1 — Architecture & Design** | Weeks 1–2 | Define ICRC-30, system schema | ICRC-30 spec, Candid types, Scan API schema |
-| **M2 — Core Implementation** | Weeks 3–6 | Build ICP canisters | PaymentManager, Authorization, Logger |
-| **M3 — ETH Integration & Scan** | Weeks 7–9 | Enable cross-chain & deploy Scan base | EIP-2612 validation, ECDSA signing, Registry canister |
-| **M4 — Frontend & UX** | Weeks 10–12 | Integrate UI & discovery | Internet Identity + ICRC-30 flow, Scan portal |
-| **M5 — Test & Launch** | Weeks 13–16 | Test & release | Cross-chain tests, registry flow, documentation |
 
 ---
 
