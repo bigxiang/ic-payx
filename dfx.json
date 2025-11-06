@@ -1,0 +1,27 @@
+{
+  "canisters": {
+    "ic-payx-backend": {
+      "candid": "src/ic-payx-backend/ic-payx-backend.did",
+      "package": "ic-payx-backend",
+      "type": "rust"
+    },
+    "ic-payx-frontend": {
+      "dependencies": [
+        "ic-payx-backend"
+      ],
+      "source": [
+        "src/ic-payx-frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "ic-payx-frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

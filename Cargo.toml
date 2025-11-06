@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "src/ic-payx-backend",
+    "src/icrc30-permit",
+]
+resolver = "2"
